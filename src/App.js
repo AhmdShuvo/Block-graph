@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Block from './Components/Block';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [blocks, setBlocks] = useState([]);
+
+  const handleAddBlock = (parentId, childId) => {
+    console.log(`Block ${childId} added to Block ${parentId}`);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Block x={50} y={50} onAddBlock={handleAddBlock} parentId={null} setBlocks={setBlocks} />
+      <canvas id="lines-canvas" className="lines-canvas"></canvas>
     </div>
   );
-}
+};
 
 export default App;
